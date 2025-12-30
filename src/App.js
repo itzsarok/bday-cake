@@ -69,7 +69,7 @@ export default function App() {
 
   const source = audioCtx.createMediaStreamSource(stream);
   const gainNode = audioCtx.createGain();
-  const sensitivity = 3.0;
+  const sensitivity = 1.0;
   gainNode.gain.value = sensitivity;
   gainNodeRef.current = gainNode;
 
@@ -112,7 +112,11 @@ export default function App() {
     if (staticFrame === cake20) {
       stopMicMonitoring(false);
       setCelebrating(true);
-    }
+      // This forces the popup after 0.75 seconds (750ms)
+      setTimeout(() => {
+      setShowPopup(true);
+    }, 750);
+  }
   }, [staticFrame]);
 
 
@@ -185,10 +189,6 @@ export default function App() {
         <Confetti
           pieces={48}
           duration={8000}
-          onDone={() => {
-            setCelebrating(false);
-            setTimeout(() => setShowPopup(true), 250);
-          }}
         />
       )}
 
