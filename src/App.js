@@ -8,6 +8,7 @@ import cake60 from "./assets/60.png";
 import cake40 from "./assets/40.png";
 import cake20 from "./assets/20.png";
 import birthdayText from "./assets/birthdaytext.png";
+import friendPhoto from "./assets/friend.jpg"; // Change this path if you put the image elsewhere
 import "./App.css";
 import Confetti from "./Confetti";
 import { useEffect, useRef, useState } from "react";
@@ -105,13 +106,8 @@ export default function App() {
   };
 
   const [celebrating, setCelebrating] = useState(false);
-  const [showMatthew, setShowMatthew] = useState(false);
-  let matthewSrc = null;
-  try {
-    matthewSrc = require("./assets/matthew.jpg");
-  } catch (e) {
-    matthewSrc = null;
-  }
+  const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     if (staticFrame === cake20) {
       stopMicMonitoring(false);
@@ -191,29 +187,23 @@ export default function App() {
           duration={8000}
           onDone={() => {
             setCelebrating(false);
-            setTimeout(() => setShowMatthew(true), 250);
+            setTimeout(() => setShowPopup(true), 250);
           }}
         />
       )}
 
-      {showMatthew && (
+      {showPopup && (
         <div
-          className="matthew-overlay"
-          onClick={() => setShowMatthew(false)}
+          className="popup-overlay"
+          onClick={() => setShowPopup(false)}
           onKeyDown={(e) => {
-            if (e.key === "Escape") setShowMatthew(false);
+            if (e.key === "Escape") setShowPopup(false);
           }}
           role="dialog"
           tabIndex={-1}
         >
-          <div className="matthew-card">
-            {matthewSrc ? (
-              <img src={matthewSrc} alt="Matthew" />
-            ) : (
-              <div style={{ color: "white", padding: 24, fontSize: 20 }}>
-                Matthew
-              </div>
-            )}
+          <div className="popup-card">
+            <img src={friendPhoto} alt="Birthday Wish" />
           </div>
         </div>
       )}
