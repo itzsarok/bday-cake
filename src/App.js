@@ -37,6 +37,7 @@ export default function App() {
     playAudio();
     }, []);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     startMicMonitoring();
     return () => {
@@ -50,7 +51,7 @@ export default function App() {
 
   const pickStaticFrame = (rms) => {
     if (rms < 0.02) return null;
-    if (rms >= 0.30) return cake20;
+    if (rms >= 0.32) return cake20;
     if (rms >= 0.22) return cake40;
     if (rms >= 0.15) return cake60;
     if (rms >= 0.08) return cake80;
