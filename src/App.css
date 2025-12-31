@@ -153,37 +153,32 @@ body,
     transform: scale(1) translateY(0);
     opacity: 1;
   }
-}/* ===== MOBILE FIX (PORTRAIT) ===== */
+}/* ===== HARD MOBILE FIX ===== */
 @media (max-width: 600px) {
 
-  html, body, #root {
-    height: 100%;
-    overflow: hidden;
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .App {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
+    width: 100%;
+    max-width: 100vw;
   }
 
   .cake {
-    padding-right: 0;        /* REMOVE DESKTOP SPACE */
-    transform: none;         /* REMOVE OVERLAP */
+    padding-right: 0 !important;
+    transform: none !important;
+    width: 100%;
   }
 
-  .birthdayText {
-    max-width: 90vw;
-    max-height: 18vh;
-  }
-
-  .cakeLoop img,
-  .cakeLoop canvas {
-    max-width: 90vw;
-    max-height: 55vh;
-    height: auto;
+  canvas {
+    width: 100% !important;
+    height: auto !important;
   }
 }
+
