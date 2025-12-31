@@ -181,4 +181,28 @@ body,
     height: auto !important;
   }
 }
+/* ===== FINAL MOBILE LOCK ===== */
+@media (max-width: 600px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: black;
+  }
+
+  #root, .App {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+  }
+
+  .cake,
+  .cakeLoop,
+  canvas,
+  img {
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
+}
 
