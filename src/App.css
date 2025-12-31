@@ -153,4 +153,35 @@ body,
     transform: scale(1) translateY(0);
     opacity: 1;
   }
+}/* --- MOBILE FIXES (Portrait Mode) --- */
+@media (max-width: 600px) {
+  /* 1. Stop the scrolling */
+  html, body {
+    overflow: hidden;
+  }
+
+  .App {
+    /* Move cake up a bit so it fits on screen */
+    padding-top: 20px;
+  }
+
+  .cake {
+    /* 2. Remove the "Right Padding" (That's for a mouse cursor) */
+    padding-right: 0;
+    
+    /* 3. Reduce the overlap so they fit together tighter */
+    transform: translateY(-12px);
+  }
+
+  .birthdayText {
+    /* Make the text smaller at the top */
+    max-height: 20vh;
+    max-width: 90vw;
+  }
+
+  .cakeLoop img, .cakeLoop canvas {
+    /* Let the cake be big enough to see */
+    max-height: 50vh;
+    max-width: 90vw;
+  }
 }
